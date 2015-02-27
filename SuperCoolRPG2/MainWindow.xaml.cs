@@ -146,7 +146,6 @@ namespace SuperCoolRPG2
             if(_currentMonster.HP <= 0)
             {
                 ClearTextBox();
-                MoveTo(_player.CurrentLocation);
 
                 SendTextToTextBox(Environment.NewLine + "You defeated the " + _currentMonster.Name + Environment.NewLine);
 
@@ -158,7 +157,7 @@ namespace SuperCoolRPG2
                 
 
                 SendTextToTextBox("You receive " + _currentMonster.XPReward.ToString() + " experience points" + Environment.NewLine);
-
+                UpdateMonsterListInUI();
             }
         }
 
