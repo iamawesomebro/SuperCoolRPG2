@@ -126,6 +126,8 @@ namespace SuperCoolRPG2
             return null;
         }
 
+
+
         public static void GenerateRandomMonster(int level, Location currentLocation)
         {
             if (Game.stepCounter > RNG.NumberBetween(1, 10))

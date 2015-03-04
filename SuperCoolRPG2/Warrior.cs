@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SuperCoolRPG2
 {
-    class Warrior: Player
+    class Warrior: Player , IPlayer
     {
 
         public override string ClassString { get { return "Warrior"; } }

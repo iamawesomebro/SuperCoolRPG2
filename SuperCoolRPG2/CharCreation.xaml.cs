@@ -47,6 +47,7 @@ namespace SuperCoolRPG2
             {
                 case "Warrior":
                     _player = new Warrior();
+                    _player.Strength = 5;
                     break;
                 case "Mage":
                     _player = new Mage();

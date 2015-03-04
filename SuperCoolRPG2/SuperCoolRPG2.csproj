@@ -57,6 +57,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Combat.cs" />
     <Compile Include="EquipmentManager.xaml.cs">
       <DependentUpon>EquipmentManager.xaml</DependentUpon>
     </Compile>

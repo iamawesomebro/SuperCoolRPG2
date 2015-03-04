@@ -11,11 +11,19 @@ namespace SuperCoolRPG2
 
         string Name { get; set; }
 
-        string ClassString { get; }
+        bool isFighting { get; set; }
+
+        int HP { get; set; }
 
         int Exp { get; set; }
 
         int Level { get; set; }
+
+        int Strength { get; set; }
+
+        int Defense { get; set; }
+
+        Location CurrentLocation { get; set; }
 
     }
 }

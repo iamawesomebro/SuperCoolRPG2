@@ -13,7 +13,15 @@ namespace SuperCoolRPG2
         private int level;
         private int exp;
 
+        public bool isFighting { get; set; }
+
+        public int HP { get; set; }
+
+        public int Defense { get; set; }
+
         public int Level { get { return this.level; } set { this.level = value; NotifyPropertyChanged(); } }
+
+        public int Strength { get; set; }
 
         public List<Item> Inventory = new List<Item>();
 
@@ -29,14 +37,7 @@ namespace SuperCoolRPG2
 
         public int Exp { get { return this.exp; } set { this.exp = value; NotifyPropertyChanged(); } }
 
-        public void checkLevelUp (int exp)
-        {
-            if(exp % 1 == 0)
-            {
-                Level++;
-                
-            }
-        }
+        
 
 
         private void NotifyPropertyChanged([CallerMemberName] string property = null)

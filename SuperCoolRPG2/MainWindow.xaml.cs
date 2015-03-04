@@ -38,6 +38,7 @@ namespace SuperCoolRPG2
             lblClass.DataContext = _player;
             lblExperience.DataContext = _player;
             lblLevel.DataContext = _player;
+            lblStrength.DataContext = _player;
         }
 
         public void MoveTo(Location newLocation)
@@ -135,30 +136,17 @@ namespace SuperCoolRPG2
 
         private void btnUseWeapon_Click(object sender, RoutedEventArgs e)
         {
-            int damageToMonster = RNG.NumberBetween(1, 2);
 
             Monster _currentMonster = (Monster)cboMonsters.SelectedItem;
 
-            _currentMonster.HP -= damageToMonster;
+            Combat currentFight = new Combat(this._player, _currentMonster, this);
 
-            SendTextToTextBox(Environment.NewLine + "You hit the " + _currentMonster.Name + " for " + damageToMonster.ToString() + " points." + Environment.NewLine);
+            _player.isFighting = true;
 
-            if(_currentMonster.HP <= 0)
-            {
-                ClearTextBox();
-
-                SendTextToTextBox(Environment.NewLine + "You defeated the " + _currentMonster.Name + Environment.NewLine);
-
-                //reward xp
-                _player.Exp += _currentMonster.XPReward;
-                _player.checkLevelUp(_player.Exp);
-
-                _player.CurrentLocation.areaMonsterList.Remove(_currentMonster);
-                
-
-                SendTextToTextBox("You receive " + _currentMonster.XPReward.ToString() + " experience points" + Environment.NewLine);
-                UpdateMonsterListInUI();
-            }
+            currentFight.StartFight(); 
+            
+            UpdateMonsterListInUI();
+            
         }
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)

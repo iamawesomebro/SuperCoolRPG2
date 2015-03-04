@@ -18,8 +18,8 @@ namespace SuperCoolRPG2
         public Location WestLocation { get; set; }
         public Location EastLocation { get; set; }
         event PropertyChangedEventHandler PropertyChanged;
-        private List<Monster> AreaMontsterList { get { return areaMonsterList; } set { areaMonsterList = value; OnPropertyChanged(); } }
-        public List<Monster> areaMonsterList = new List<Monster>();
+        private List<IPlayer> AreaMontsterList { get { return areaMonsterList; } set { areaMonsterList = value; OnPropertyChanged(); } }
+        public List<IPlayer> areaMonsterList = new List<IPlayer>();
 
         public Location(int id, string name, string desc)
         {
