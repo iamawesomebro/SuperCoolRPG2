@@ -9,7 +9,7 @@
         <Label Content="Level:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="18,100,0,0"/>
         <Label Content="Name:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="18,133,0,0"/>
         <Label x:Name="lblName" Content="{Binding Path=Name}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="110,133,0,0" Height="24" Width="43" RenderTransformOrigin="-2.857,-0.092"/>
-        <Label x:Name="lblHitPoints" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="110,19,0,0"/>
+        <Label x:Name="lblHitPoints" Content="{Binding Path=HP}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="110,19,0,0"/>
         <Label x:Name="lblGold" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="110,45,0,0"/>
         <Label x:Name="lblExperience" Content="{Binding Path=Exp}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="110,73,0,0"/>
         <Label x:Name="lblLevel" Content="{Binding Path=Level}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="110,99,0,0"/>
@@ -40,14 +40,14 @@
         <TextBlock x:Name="lblClass" HorizontalAlignment="Left" Margin="61,164,0,0" TextWrapping="Wrap" Text="{Binding Path=ClassString}" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="25,193,0,0" TextWrapping="Wrap" Text="Weapon" VerticalAlignment="Top" RenderTransformOrigin="0.492,0.513"/>
         <ComboBox x:Name="cboEquipedWeapon" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="89,187,0,0"/>
-        <RichTextBox HorizontalAlignment="Left" Height="33" Margin="272,19,0,0" VerticalAlignment="Top" Width="246">
+        <RichTextBox HorizontalAlignment="Left" Height="33" Margin="61,272,0,0" VerticalAlignment="Top" Width="246">
             <FlowDocument>
                 <Paragraph>
                     <Run Text="RichTextBox"/>
                 </Paragraph>
             </FlowDocument>
         </RichTextBox>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="248,149,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="232,250,0,0" VerticalAlignment="Top" Width="75"/>
         <Label Content="Strength" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="18,214,0,0"/>
         <Label x:Name="lblStrength" Content="{Binding Path=Strength}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="89,214,0,0"/>
 

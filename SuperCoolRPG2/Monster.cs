@@ -38,6 +38,7 @@ namespace SuperCoolRPG2
             Exp = GetXPReward(level);
             RewardGold = GetRewardGold(level);
             MClass = mclass;
+
         }
 
         static public int GetXPReward(int level)

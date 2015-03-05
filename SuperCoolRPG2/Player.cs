@@ -13,9 +13,10 @@ namespace SuperCoolRPG2
         private int level;
         private int exp;
 
+
         public bool isFighting { get; set; }
 
-        public int HP { get; set; }
+        public int HP { get { return this.level; } set { this.level = value; NotifyPropertyChanged(); } }
 
         public int Defense { get; set; }
 

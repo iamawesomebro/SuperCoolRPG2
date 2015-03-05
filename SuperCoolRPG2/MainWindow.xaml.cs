@@ -39,6 +39,7 @@ namespace SuperCoolRPG2
             lblExperience.DataContext = _player;
             lblLevel.DataContext = _player;
             lblStrength.DataContext = _player;
+            lblHitPoints.DataContext = _player;
         }
 
         public void MoveTo(Location newLocation)
@@ -113,7 +114,7 @@ namespace SuperCoolRPG2
             rtbMessages.Text = String.Empty;
         }
 
-        private void UpdateMonsterListInUI()
+        public void UpdateMonsterListInUI()
         {
 
             if (_player.CurrentLocation.areaMonsterList.Count == 0)
@@ -145,7 +146,7 @@ namespace SuperCoolRPG2
 
             currentFight.StartFight(); 
             
-            UpdateMonsterListInUI();
+            
             
         }
 

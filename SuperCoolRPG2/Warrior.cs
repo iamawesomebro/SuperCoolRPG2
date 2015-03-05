@@ -10,5 +10,8 @@ namespace SuperCoolRPG2
     {
 
         public override string ClassString { get { return "Warrior"; } }
+
+        public int HP = 10;
+        public int Strength = 5;
     }
 }
