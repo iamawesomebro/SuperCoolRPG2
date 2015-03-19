@@ -23,6 +23,8 @@ namespace SuperCoolRPG2
     public partial class MainWindow : Window
     {
         Player _player;
+        Movement movement;
+
         event PropertyChangedEventHandler PropertyChanged;
 
         public MainWindow(Player _player)
@@ -31,7 +33,7 @@ namespace SuperCoolRPG2
             InitializeComponent();
 
             this._player = _player;
-            MoveTo(Game.LocationByID(Game.LOCATION_ID_START));
+            movement.MoveTo(Game.LocationByID(Game.LOCATION_ID_START));
             _player.Inventory.Add(Game.ItembyID(Game.WEAPON_ID_NEWBIE_SWORD));
 
             lblName.DataContext = _player;
@@ -42,59 +44,32 @@ namespace SuperCoolRPG2
             lblHitPoints.DataContext = _player;
         }
 
-        public void MoveTo(Location newLocation)
-        {
-            _player.CurrentLocation = newLocation;
-
-            btnNorth.Visibility = (newLocation.NorthLocation == null ? Visibility.Hidden : Visibility.Visible);
-
-            btnWest.Visibility = (newLocation.WestLocation == null ? Visibility.Hidden : Visibility.Visible);
-
-            btnEast.Visibility = (newLocation.EastLocation == null ? Visibility.Hidden : Visibility.Visible);
-
-            btnSouth.Visibility = (newLocation.SouthLocation == null ? Visibility.Hidden : Visibility.Visible);
-
-            rtbLocation.Text = newLocation.Name + Environment.NewLine;
-            rtbLocation.Text += newLocation.Description + Environment.NewLine;
-
-            Game.GenerateRandomMonster(_player.Level, _player.CurrentLocation);
-
-            if (_player.CurrentLocation.areaMonsterList.Count != 0)
-            {
-                foreach (Monster monster in _player.CurrentLocation.areaMonsterList)
-                {
-                    SendTextToTextBox("A " + monster.Name + " is here." + Environment.NewLine);
-                }
-            }
-
-            UpdateMonsterListInUI();
-        }
 
         private void btnNorth_Click(object sender, RoutedEventArgs e)
         {
             ClearTextBox();
-            MoveTo(_player.CurrentLocation.NorthLocation);
+            movement.MoveTo(_player.CurrentLocation.NorthLocation);
             IncreaseStepCounter();
         }
 
         private void btnWest_Click(object sender, RoutedEventArgs e)
         {
             ClearTextBox();
-            MoveTo(_player.CurrentLocation.WestLocation);
+            movement.MoveTo(_player.CurrentLocation.WestLocation);
             IncreaseStepCounter();
         }
 
         private void btnSouth_Click(object sender, RoutedEventArgs e)
         {
             ClearTextBox();
-            MoveTo(_player.CurrentLocation.SouthLocation);
+            movement.MoveTo(_player.CurrentLocation.SouthLocation);
             IncreaseStepCounter();
         }
 
         private void btnEast_Click(object sender, RoutedEventArgs e)
         {
             ClearTextBox();
-            MoveTo(_player.CurrentLocation.EastLocation);
+            movement.MoveTo(_player.CurrentLocation.EastLocation);
             IncreaseStepCounter();
         }
 
@@ -112,6 +87,17 @@ namespace SuperCoolRPG2
         public void ClearTextBox()
         {
             rtbMessages.Text = String.Empty;
+        }
+
+        public void UpdateMovementInUi()
+        {
+            btnNorth.Visibility = (_player.CurrentLocation.NorthLocation == null ? Visibility.Hidden : Visibility.Visible);
+
+            btnWest.Visibility = (_player.CurrentLocation.WestLocation == null ? Visibility.Hidden : Visibility.Visible);
+
+            btnEast.Visibility = (_player.CurrentLocation.EastLocation == null ? Visibility.Hidden : Visibility.Visible);
+
+            btnSouth.Visibility = (_player.CurrentLocation.SouthLocation == null ? Visibility.Hidden : Visibility.Visible);
         }
 
         public void UpdateMonsterListInUI()

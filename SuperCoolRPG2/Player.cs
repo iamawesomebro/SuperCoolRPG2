@@ -8,21 +8,25 @@ using System.Runtime.CompilerServices;
 
 namespace SuperCoolRPG2
 {
-    public abstract class Player :IPlayer, INotifyPropertyChanged
+    public class Player :IPlayer, INotifyPropertyChanged
     {
         private int level;
         private int exp;
+        private int hp;
+        private int strength;
 
 
         public bool isFighting { get; set; }
+        public bool isDead { get; set; }
 
-        public int HP { get { return this.level; } set { this.level = value; NotifyPropertyChanged(); } }
+        public int HP { get { return this.hp; } set { this.hp = value; NotifyPropertyChanged(); } }
+        public int MaxHP { get; set; }
 
         public int Defense { get; set; }
 
         public int Level { get { return this.level; } set { this.level = value; NotifyPropertyChanged(); } }
 
-        public int Strength { get; set; }
+        public int Strength { get { return this.strength; } set { this.strength = value; NotifyPropertyChanged(); } }
 
         public List<Item> Inventory = new List<Item>();
 
@@ -30,7 +34,7 @@ namespace SuperCoolRPG2
 
         public string Name { get; set; }
 
-        public abstract string ClassString { get; }
+        public string ClassString { get; set; }
 
         public Location CurrentLocation { get; set; }
 

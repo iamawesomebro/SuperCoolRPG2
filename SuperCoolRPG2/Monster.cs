@@ -16,12 +16,14 @@ namespace SuperCoolRPG2
         public int ID { get; set; }
         public int Defense { get; set; }
         public bool isFighting { get; set; } //is mob currently in battle
+        public bool isDead { get; set; }
         public int Strength { get; set; }
         public int Level { get; set; }
         public int Exp { get; set; } //How much a mob is worth in xp, not how much it has.
         public string Name { get; set; }
         public int RewardGold { get; set; }
         public int HP { get; set; }
+        public int MaxHP { get; set; }
         public Location CurrentLocation { get; set; }
         MonsterClass MClass { get; set; }
 

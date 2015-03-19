@@ -64,11 +64,10 @@
     <Compile Include="Game.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="Location.cs" />
-    <Compile Include="Mage.cs" />
     <Compile Include="Monster.cs" />
+    <Compile Include="Movement.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="RNG.cs" />
-    <Compile Include="Warrior.cs" />
     <Compile Include="Weapon.cs" />
     <Page Include="CharCreation.xaml">
       <SubType>Designer</SubType>

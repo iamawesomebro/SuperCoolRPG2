@@ -21,7 +21,7 @@ namespace SuperCoolRPG2
     /// </summary>
     public partial class CharCreation : Window
     {
-        Player _player;
+        Player _player = new Player();
 
         public CharCreation()
         {
@@ -47,10 +47,15 @@ namespace SuperCoolRPG2
             switch (input)
             {
                 case "Warrior":
-                    _player = new Warrior();
+                    _player.ClassString = "Warrior";
+                    _player.Strength = 5;
+                    _player.MaxHP = 10;
+                    _player.HP = _player.MaxHP;
                     break;
                 case "Mage":
-                    _player = new Mage();
+                    _player.ClassString = "Warrior";
+                    _player.Strength = 2;
+                    _player.MaxHP = 5;
                     break;
             }
         }

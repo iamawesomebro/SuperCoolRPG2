@@ -13,6 +13,10 @@ namespace SuperCoolRPG2
 
         bool isFighting { get; set; }
 
+        bool isDead { get; set; } 
+
+        int MaxHP { get; set; }
+
         int HP { get; set; }
 
         int Exp { get; set; }

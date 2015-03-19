@@ -36,7 +36,7 @@ namespace SuperCoolRPG2
         public async void StartFight() //The actual turn based fighting part of the code.
         {
 
-            while (_player.isFighting && !isDead())
+            while (_player.isFighting && !_player.isDead )
             {
 
                 int thisDamage = GetDamage();
@@ -46,7 +46,7 @@ namespace SuperCoolRPG2
                 _game.SendTextToTextBox(Environment.NewLine + "You deal  " + thisDamage + "  damage to " + _monster.Name + Environment.NewLine);
                 await Task.Delay(1000);
 
-                if(!isDead()) //Check to see if the mob gets a chance to attack before death.
+                if(_monster.isDead) //Check to see if the mob gets a chance to attack before death.
                 {
                     int mobDamage = GetMobDamage();
                     _player.HP -= mobDamage;
@@ -55,21 +55,44 @@ namespace SuperCoolRPG2
                     await Task.Delay(1000);
                 }
 
+
+                if (_player.isDead)
+                {
+
+                }
             }
 
-            getReward(); //death message, exp, rewards, good stuff.
+            getReward(); // mobs death message, exp, rewards, good stuff.
         }
         
 
-        public bool isDead()
+        public void isDead()
         {
-            if(_monster.HP <= 0)
+            if(_monster.HP <= 0 )
             {
-               
-                return true;
+                _monster.isDead = true;
+            }
+            else if(_player.HP <= 0)
+            {
+                _player.isDead = true;
             }
 
-            return false;
+
+        }
+
+        public void DeathStuff() //All the bad stuff associated with dying, xp loss, etc.
+        {
+            int xpLoss = XpPerecent();
+            _player.Exp -= xpLoss;
+            _game.SendTextToTextBox("You've died. You lost " + xpLoss + " experience. ");
+            
+
+        }
+
+        public int XpPerecent()
+        {
+            return _player.Exp / 10;
+            
         }
 
         public void getReward() //rewards player with xp, gold, and items (one day, one day)
@@ -92,7 +115,27 @@ namespace SuperCoolRPG2
                 _player.Exp = 0;
                 _game.SendTextToTextBox("YOU'VE REACHED LEVEL " + _player.Level.ToString());
 
+                switch (_player.ClassString)
+                {
+                    case "Warrior":
+                        _player.Strength += 2;
+                        _player.MaxHP += 4;
+                        break;
+                    case "Mage":
+                        _player.Strength += 1;
+                        _player.MaxHP += 2;
+                        break;
+                }
+
+                _game.SendTextToTextBox(" Your stats are now " + _player.MaxHP + " health, " + _player.Strength + " strength ");
+                FullHeal(); //generously heal player after leveling.
             }
         }
+
+        public void FullHeal()
+        {
+            _player.HP = _player.MaxHP;
+        }
+
     }
 }
